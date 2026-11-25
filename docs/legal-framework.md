@@ -9,6 +9,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 ## 2. Cybercrime Category Decomposition and Statutory Assessment
 
 ### Category 1: Phishing
+
 - **Activity & Stage:** Sending deceptive invoice and mandate-verification lures (`PHISH-01`, `PHISH-02`, `PHISH-03`) to induce finance staff to open malicious attachments or visit a fake payment portal (Stage 2).
 - **Supporting Evidence:** `phishing-01.eml`, `phishing-02.eml`, `phishing-03.eml`, `email-01..03-headers.txt`.
 - **Victim & Assets:** Employees `EMP-FIN-104`, `EMP-FIN-108`; corporate mail gateway and payment portal trust.
@@ -17,6 +18,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Criminal prosecution, domain takedown, and civil damages; attribution is complicated by redacted WHOIS records and cross-border relays.
 
 ### Category 2: Email and Website Spoofing
+
 - **Activity & Stage:** Forging the corporate `From` header (`finance-ops@asterionfin.example` in `PHISH-02`) and operating lookalike domains (`asteri0nfin.example`, `asterionfin-verify.example`) hosting a spoofed verification portal (Stages 1–2).
 - **Supporting Evidence:** `phishing-01..03.eml`, `dns-records.json`, `connection-logs.json`.
 - **Victim & Assets:** Asterion Financial Services brand integrity, domain reputation, and employee authentication perimeter.
@@ -25,6 +27,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Registrar abuse escalation, UDRP/INDRP domain disputes, and DMARC enforcement; lookalike domains that self-sign SPF/DKIM (`PHISH-03`) evade naive perimeter checks.
 
 ### Category 3: Identity Theft / Digital Impersonation
+
 - **Activity & Stage:** Impersonating corporate billing/audit desks in email lures and subsequently misusing `EMP-FIN-104`'s credentials/session identifier (`SES-9941-HYDRA`) to authorize `PAY-REQ-7721` (Stages 2–4).
 - **Supporting Evidence:** `phishing-02.eml`, `login-events.csv` (`AUTH-005`, `AUTH-006`).
 - **Victim & Assets:** Employee digital identity (`EMP-FIN-104`), corporate approval authority.
@@ -33,6 +36,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Session revocation, credential rotation, and criminal complaint under § 66C; distinguishing unauthorized external operator misuse from insider action requires correlating IP (`203.0.113.95`) and endpoint logs.
 
 ### Category 4: Unauthorized Access
+
 - **Activity & Stage:** Repeated failed authentication probes (`AUTH-002`–`AUTH-004`) followed by unauthorized access to `pay.asterionfin.example` (`AUTH-005`) from anomalous external IP `203.0.113.95` and unauthorized modification of payment instructions (`AUTH-006`) (Stage 4).
 - **Supporting Evidence:** `login-events.csv`, `ip-observations.csv`, `connection-logs.json` (`CONN-005`).
 - **Victim & Assets:** Corporate payment approval platform (`pay.asterionfin.example`) and internal ledger data.
@@ -41,6 +45,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Civil adjudication under § 43, criminal prosecution under § 66, and regulatory reporting to CERT-In; proving lack of authorization requires intact, time-synchronized logs (NIC/NPL NTP alignment per CERT-In 2022 Directions).
 
 ### Category 5: Malware Distribution (Simulated Trojan Decoy)
+
 - **Activity & Stage:** Delivering a deceptive invoice attachment (`Vendor_Invoice_INV-2026-8841.pdf.html` / `Payment_Remittance_Batch_Nov20.zip`) whose simulated execution (`invoice_viewer.exe`) decodes staging configuration, targets a synthetic browser profile, and emits an outbound beacon (Stages 2–3).
 - **Supporting Evidence:** `phishing-01.eml`, `phishing-02.eml`, `execution-events.json`, `malware-observations.json`, `encoded_payload_fixture.txt`.
 - **Victim & Assets:** Corporate workstation `WKS-FIN-104` and endpoint integrity.
@@ -49,6 +54,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Host isolation, IOC blocking, and forensic imaging; telemetry alone without binary recovery must be classified cautiously (e.g., Trojan rather than assuming RAT/keylogger).
 
 ### Category 6: Financial Fraud and Payment Manipulation
+
 - **Activity & Stage:** Modifying `PAY-REQ-7721`, initiating an unauthorized `INR 450,000` UPI transfer (`TXN-001`), splitting funds across mule accounts (`TXN-002`, `TXN-003`), and converting `INR 250,000` through a simulated crypto exchange (`TXN-004`, `WLT-SIM-001/002`) (Stage 5).
 - **Supporting Evidence:** `transactions.csv`, `account-ledger.csv`, `wallet-transfers.csv`, `login-events.csv` (`AUTH-006`).
 - **Victim & Assets:** Corporate account `ASTERION_CORP_01` (`INR 450,000` initial outflow; `INR 250,000` unrecovered).
@@ -57,6 +63,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **Remedies & Challenges:** Immediate bank freeze/lien (which preserved `INR 200,000` in this scenario), NCRP/1930 escalation, and mutual legal assistance for virtual asset tracing; mule KYC verification and irreversible off-ramping remain major barriers.
 
 ### Category 7: Unsolicited / Bulk-Style Phishing Delivery (Spamming)
+
 - **Activity & Stage:** Delivering unsolicited urgent financial action notices (`PHISH-03`, referencing urgent bulk-style mandate sign-off) via newly provisioned external infrastructure to induce portal interaction (Stage 2).
 - **Supporting Evidence:** `phishing-03.eml`, `email-03-headers.txt`.
 - **Victim & Assets:** Finance approver inbox (`meera.nair@asterionfin.example`) and enterprise mail filtering controls.
@@ -64,6 +71,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 - **International Equivalents:** **US CAN-SPAM Act (15 U.S.C. § 7701 et seq.)** (civil/criminal penalties for materially falsified header information in commercial email, US-specific); **EU ePrivacy Directive** (consent rules for electronic marketing, EU-specific).
 
 ## 3. Provisions Evaluated and Explicitly Excluded (Statutory Precision)
+
 - **IT Act § 66E (Violation of Privacy):** Excluded. Section 66E applies specifically to capturing, publishing, or transmitting images of private bodily areas without consent; it does **not** apply to corporate financial or email phishing.
 - **IT Act §§ 67, 67A, 67B (Obscene / Sexually Explicit Material / CSAM):** Excluded. None of the statutory elements are present in Operation Hydra.
 - **IT Act § 66A:** Excluded. Declared unconstitutional in *Shreya Singhal v. Union of India* (2015).
@@ -81,6 +89,7 @@ The **Bharatiya Nyaya Sanhita, 2023 (BNS)** replaced the Indian Penal Code, 1860
 | **Spamming (Unsolicited Spoofed Mail)** | `phishing-03.eml`, `email-03-headers.txt` | IT Act § 66D; BNS § 318 (when fraudulent; § 66A invalid) | US CAN-SPAM Act (falsified headers); EU ePrivacy Directive | India lacks a standalone anti-spam criminal offence; liability attaches to fraudulent deception/impersonation. |
 
 ## 5. Jurisdictional Limitations of International Frameworks
+
 - **CFAA (18 U.S.C. § 1030):** Applies strictly under United States federal jurisdiction (typically requiring a protected computer used in or affecting US interstate/foreign commerce). It has no direct statutory force in India unless US infrastructure/victims create concurrent jurisdiction.
 - **EU GDPR (Articles 32–34):** Regulates data protection, security of processing, and breach notification (72-hour supervisory notification under Art. 33) for EU/EEA controllers, processors, or targeting of EU residents—not general criminal prosecution of external cybercriminals.
 - **Budapest Convention on Cybercrime (ETS No. 185):** Harmonizes substantive cybercrime offences and cross-border mutual legal assistance (MLA) / expedited preservation mechanisms among ratifying states, but domestic prosecution in India proceeds under Indian statutes (IT Act and BNS) and bilateral MLA treaties where applicable.

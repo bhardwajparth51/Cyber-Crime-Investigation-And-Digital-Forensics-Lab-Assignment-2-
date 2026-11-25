@@ -1,13 +1,16 @@
 # Evidence Handling and Chain of Custody
 
 ## Core Principles
+
 1. **Immutability of Original Evidence:** Files in `evidence/` are sealed at acquisition (`2026-11-20T10:30:00Z`) and must not be edited in place. `scripts/generate_evidence.py` refuses to overwrite an existing `manifest.json` unless `--force` is explicitly provided.
 2. **Cryptographic Verification:** Every artifact is hashed using SHA-256 (`src/common/hashing.py`) and recorded in [manifest.json](../evidence/manifest.json).
 3. **Separation of Original vs. Derived Data:** Derived analysis outputs are stored separately under `reports/generated/`, `reports/ioc-report.json`, and `reports/figures/`.
 4. **Academic Simulation Notice:** Synthetic artifacts provide a controlled, reproducible academic model and are **not** court-admissible digital evidence of an actual crime (in contrast to real-world admissibility under Section 63 of the Bharatiya Sakshya Adhiniyam, 2023).
 
 ## Chain of Custody Summary
+
 Recorded in [chain-of-custody.json](../evidence/chain-of-custody.json):
+
 - **Sequence 1 (`2026-11-20T10:30:00Z`):** `Vikram Kulkarni (IR-Lead, Asterion SOC)` acquired and SHA-256 sealed 15 synthetic evidence files (`EV-001` through `EV-015`).
 - **Sequence 2 (`2026-11-20T10:35:00Z`):** Operation Hydra forensic pipeline ingested `evidence/` read-only and routed derived outputs to `reports/generated/`.
 
@@ -32,6 +35,7 @@ Recorded in [chain-of-custody.json](../evidence/chain-of-custody.json):
 | `EV-015` | `network/ip-observations.csv` | `synthetic_network_sensor` | 1085 | `93751f2472af...` |
 
 ## Independent Verification
+
 ```bash
 python scripts/verify_evidence.py
 ```

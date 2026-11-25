@@ -18,31 +18,39 @@ All core investigation modules in Operation Hydra run **100% offline** against d
 ## Detailed Tool Profiles
 
 ### 1. Python 3.11+ & `email.parser`
+
 - **Investigation Stage:** Phishing and header forensics.
 - **Installation:** Built into Python standard library (`python3 --version` >= 3.11).
 - **Example Command:**
+
   ```bash
   python -c "from pathlib import Path; from src.email_analysis.header_parser import parse_eml_file; print(parse_eml_file(Path('evidence/emails/phishing-01.eml')).from_address)"
   ```
+
 - **Expected Output:** `billing@asteri0nfin.example`
 - **Limitations:** Parses embedded `Authentication-Results` text as reported by the simulated gateway; cannot cryptographically verify DKIM signatures without live DNS public keys.
 - **Internet Access:** Not required.
 
 ### 2. `hashlib` (SHA-256)
+
 - **Investigation Stage:** Evidence acquisition, attachment profiling, and integrity verification.
 - **Installation:** Python standard library.
 - **Example Command:**
+
   ```bash
   python scripts/verify_evidence.py
   ```
+
 - **Expected Output:** `[VERIFIED] All evidence artifacts match their recorded SHA-256 hashes.`
 - **Limitations:** Detects post-acquisition modification but cannot prove provenance prior to initial acquisition without trusted timestamps.
 - **Internet Access:** Not required.
 
 ### 3. `dnspython` (plus `dig` / `nslookup` CLI equivalents)
+
 - **Investigation Stage:** Infrastructure and email authentication reconnaissance.
 - **Installation:** `pip install dnspython` (or OS `dnsutils` package for `dig`/`nslookup`).
 - **Example Commands:**
+
   ```bash
   # Offline synthetic inspection
   python -c "from pathlib import Path; from src.infrastructure.dns_lookup import analyze_synthetic_dns; print(len(analyze_synthetic_dns(Path('evidence/network/dns-records.json'))))"
@@ -51,39 +59,49 @@ All core investigation modules in Operation Hydra run **100% offline** against d
   dig +short TXT _dmarc.asterionfin.example
   nslookup -type=MX asterionfin.example
   ```
+
 - **Expected Output:** Offline returns `4` domain profiles; live DNS queries return current TXT/MX resource records when resolving real infrastructure.
 - **Limitations:** Current DNS records may change after an attack (fast-flux or registrar suspension), so historical passive DNS may be needed in real cases.
 - **Internet Access:** Offline mode: No. Live `dig`/`nslookup`/`dnspython`: Yes (analyst approval required).
 
 ### 4. `python-whois` (plus `whois` CLI)
+
 - **Investigation Stage:** Lookalike domain age profiling.
 - **Installation:** `pip install python-whois` (or OS `whois` client).
 - **Example Command:**
+
   ```bash
   python -c "from pathlib import Path; from src.infrastructure.whois_lookup import analyze_synthetic_whois; print([d['domain'] for d in analyze_synthetic_whois(Path('evidence/network/dns-records.json')) if d['newly_registered_flag']])"
   ```
+
 - **Expected Output:** `['asteri0nfin.example', 'asterion-billing.invalid', 'asterionfin-verify.example']`
 - **Limitations:** GDPR privacy redaction frequently masks registrant identity in live WHOIS/RDAP responses.
 - **Internet Access:** Offline mode: No. Live mode: Yes (analyst approval required).
 
 ### 5. `NetworkX` & `pandas`
+
 - **Investigation Stage:** Financial fraud tracing, rapid transfer detection, and mule clustering.
 - **Installation:** `pip install networkx pandas`
 - **Example Command:**
+
   ```bash
   python scripts/analyze_campaign.py
   ```
+
 - **Expected Output:** Reconstructed paths from `ASTERION_CORP_01` through `MULE_ACC_01` to `MULE_ACC_04` and `HYDRA-SIM-WALLET-EXIT-9999`, plus `INR 450,000.00` outflow reconciliation.
 - **Limitations:** Graph analysis reflects recorded ledger edges; cash withdrawals or off-platform OTC swaps create blind spots outside banking logs.
 - **Internet Access:** Not required.
 
 ### 6. `pytest`
+
 - **Investigation Stage:** Reproducible verification of parsers, validators, timeline ordering, and hash checks.
 - **Installation:** `pip install pytest`
 - **Example Command:**
+
   ```bash
   pytest -v
   ```
+
 - **Expected Output:** All unit tests passing offline with deterministic synthetic fixtures.
 - **Limitations:** Verifies code correctness against synthetic cases rather than real-world telemetry noise.
 - **Internet Access:** Not required.

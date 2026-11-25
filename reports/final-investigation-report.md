@@ -31,6 +31,7 @@ Prior to the fraud event, adversaries profiled finance department roles—specif
 ## 3. Scope and Investigation Objectives
 
 The investigation scope encompasses five synthetic telemetry domains acquired at `2026-11-20T10:30:00Z` by SOC Lead Vikram Kulkarni:
+
 1. **Email & Header Forensics:** `phishing-01.eml` through `phishing-03.eml` and extracted raw headers.
 2. **Infrastructure Telemetry:** `dns-records.json`, `connection-logs.json`, and `ip-observations.csv`.
 3. **Endpoint Telemetry:** `execution-events.json`, `malware-observations.json`, and the harmless Base64 fixture `encoded_payload_fixture.txt`.
@@ -44,6 +45,7 @@ The primary objectives were to verify evidence integrity, reconstruct a unified 
 ## 4. Investigation Methodology
 
 The investigation adhered to standard digital forensics preservation principles:
+
 - **Cryptographic Sealing & Separation:** All 15 original artifacts in `evidence/` were verified via SHA-256 against [manifest.json](../evidence/manifest.json) prior to processing. Derived reports and visualizations were written strictly to `reports/generated/`, `reports/ioc-report.json`, and `reports/figures/`.
 - **Offline Reproducibility:** All parsing, DNS/WHOIS profiling, malware telemetry classification, graph tracing (`NetworkX`), and timeline correlation executed offline via `scripts/analyze_campaign.py` without external API uploads or live network probing.
 - **Evidentiary Caution:** Embedded `Authentication-Results` headers are tagged `simulated_*` (`live_dns_verified = False`) so simulated header text is never overstated as cryptographic proof. Similarly, timestamp correlation is distinguished from causal proof or personal attribution.
@@ -89,7 +91,7 @@ Automated inspection (`src/email_analysis/`) flagged all three samples as **high
 | `PHISH-02` | `2026-11-20T08:55:40Z` | `finance-ops@asterionfin.example` | Yes (`asterion-billing.invalid`) | `softfail` / `fail` / `fail` | Direct corporate domain spoofing from `203.0.113.77`, mismatched `Return-Path`, `.zip` archive lure |
 | `PHISH-03` | `2026-11-20T09:04:15Z` | `audit-desk@asterionfin-verify.example` | No | `pass` / `pass` / `none` | Attacker lookalike domain self-signed SPF/DKIM (`198.51.100.88`), absent DMARC policy, urgent BEC mandate |
 
-Offline WHOIS profiling confirms that all three adversarial domains were registered between 16 and 18 November 2026 (`2` to `4` days prior to the attack) with redacted registrant information, contrasting sharply with `asterionfin.example` (registered `2019-03-14`, enforcing `v=DMARC1; p=reject`).
+Offline WHOIS profiling confirms that all three adversarial domains were registered between 16 and 18 November 2026 (`1` to `3` full days before 20 November 2026 `00:00:00Z`; `2` to `4` calendar days prior to the attack) with redacted registrant information, contrasting sharply with `asterionfin.example` (registered `2019-03-14`, enforcing `v=DMARC1; p=reject`).
 
 ---
 
@@ -99,7 +101,7 @@ Endpoint telemetry (`execution-events.json`) and static decoding of `encoded_pay
 
 - **Observed Sequence:** Upon opening `Vendor_Invoice_INV-2026-8841.pdf.html` (`09:14:48Z`), `invoice_viewer.exe` launched from the user's `Temp` directory (`09:15:02Z`), decoded a Base64 staging configuration pointing to `pay-verify.asterionfin-verify.example` (`198.51.100.88`), attempted access against `synthetic_browser_profile` (`09:15:15Z`), and generated a single outbound beacon (`09:15:22Z`).
 - **Differential Classification:** The payload is **not** classified as a **RAT** (no interactive remote shell or persistent C2 loop observed), **Keylogger** (no keyboard capture events), **Logic Bomb** (immediate execution rather than conditional/time-delayed trigger), or **Worm** (no autonomous lateral propagation).
-- **IOC Extraction:** Across all sources, 23 unique synthetic IOCs were cataloged in [reports/ioc-report.json](../reports/ioc-report.json), all explicitly marked `origin: "synthetic"`.
+- **IOC Extraction:** Across all sources, 23 unique synthetic IOCs were cataloged in [reports/ioc-report.json](ioc-report.json), all explicitly marked `origin: "synthetic"`.
 
 ---
 
@@ -110,6 +112,7 @@ Graph reconstruction (`src/financial_analysis/`) verified five fiat banking tran
 ![Operation Hydra Simulated Fund-Flow Graph](figures/fund-flow-graph.png)
 
 ### Flow Summary and Mule Indicators
+
 - **Initial Diversion (`09:45:12Z`):** `TXN-001` moved `INR 450,000.00` (UPI, `UTR202611200001`) from `ASTERION_CORP_01` to `MULE_ACC_01`.
 - **Rapid Splitting (`09:49:30Z` & `09:52:05Z`):** Within `258` and `413` seconds of receipt, `MULE_ACC_01` (`98.9%` pass-through, `0.00` opening balance) split `INR 270,000.00` (IMPS) to `MULE_ACC_02` and `INR 175,000.00` (UPI) to `MULE_ACC_03`.
 - **Branch A — Unrecovered Off-Ramp (`10:03:40Z`–`10:09:45Z`):** `MULE_ACC_02` (`92.6%` pass-through) transferred `INR 250,000.00` (`TXN-004`, IMPS) within `850` seconds to `CRYPTO_EXCH_SIM_01`, represented in `wallet-transfers.csv` as `2,850.00 SIM-USDT` moving through `HYDRA-SIM-WALLET-ALPHA-0000` to `HYDRA-SIM-WALLET-EXIT-9999`.
@@ -227,4 +230,6 @@ Operation Hydra illustrates how modern financial cybercrime bridges technical de
 
 - **Submitted By:** Parth Bhardwaj (Roll No. `2301730289`)
 - **Assignment:** Assignment 2 – Unit 2: Types of Cyber Crimes (`Operation Hydra`)
-- **GitHub Repository:** https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-
+- **Incident Reference:** `INC-2026-HYDRA-01` (Controlled Synthetic Simulation)
+- **Offline Verification:** `python scripts/verify_evidence.py` (`15/15` SHA-256 digests verified), `python scripts/analyze_campaign.py`, and `pytest -v` (`10/10` tests passing)
+- **GitHub Repository:** [https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-](https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-)

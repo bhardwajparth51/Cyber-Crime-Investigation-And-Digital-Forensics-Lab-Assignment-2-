@@ -144,19 +144,19 @@ def render_fund_flow_figure(graph: nx.DiGraph, output_path: Path) -> Path:
     from matplotlib.patches import Patch
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig, ax = plt.subplots(figsize=(13.5, 6.0))
+    fig, ax = plt.subplots(figsize=(15.5, 6.2))
 
     # Deterministic hierarchical coordinates prevent overlapping edges and labels
     pos_map: dict[str, tuple[float, float]] = {
         "ASTERION_CORP_01": (0.0, 0.0),
-        "MULE_ACC_01": (2.3, 0.0),
-        "MULE_ACC_02": (4.6, -1.1),
-        "MULE_ACC_03": (4.6, 1.1),
-        "MULE_ACC_04": (7.1, 1.1),
-        "CRYPTO_EXCH_SIM_01": (7.1, -1.1),
-        "HYDRA-SIM-EXCH-ONRAMP-0001": (9.4, -1.1),
-        "HYDRA-SIM-WALLET-ALPHA-0000": (11.7, -1.1),
-        "HYDRA-SIM-WALLET-EXIT-9999": (14.0, -1.1),
+        "MULE_ACC_01": (2.6, 0.0),
+        "MULE_ACC_02": (5.4, -1.15),
+        "MULE_ACC_03": (5.4, 1.15),
+        "MULE_ACC_04": (8.6, 1.15),
+        "CRYPTO_EXCH_SIM_01": (8.6, -1.15),
+        "HYDRA-SIM-EXCH-ONRAMP-0001": (11.8, -1.15),
+        "HYDRA-SIM-WALLET-ALPHA-0000": (15.0, -1.15),
+        "HYDRA-SIM-WALLET-EXIT-9999": (18.2, -1.15),
     }
     fallback_pos = nx.spring_layout(graph, seed=42)
     pos = {node: pos_map.get(node, fallback_pos[node]) for node in graph.nodes}
@@ -173,7 +173,7 @@ def render_fund_flow_figure(graph: nx.DiGraph, output_path: Path) -> Path:
             node_colors.append("#d97706")
 
     nx.draw_networkx_nodes(
-        graph, pos, node_color=node_colors, node_size=1650, edgecolors="#1a202c", linewidths=1.2, ax=ax
+        graph, pos, node_color=node_colors, node_size=1450, edgecolors="#1a202c", linewidths=1.2, ax=ax
     )
     nx.draw_networkx_edges(
         graph,
@@ -205,7 +205,7 @@ def render_fund_flow_figure(graph: nx.DiGraph, output_path: Path) -> Path:
         )
 
     edge_labels = {
-        (u, v): f"{d['transaction_id']}\nINR {d['amount']:,.0f} ({d['status']})"
+        (u, v): f"{d['transaction_id']}\nINR {d['amount']:,.0f}\n({d['status']})"
         for u, v, d in graph.edges(data=True)
     }
     nx.draw_networkx_edge_labels(
@@ -213,7 +213,7 @@ def render_fund_flow_figure(graph: nx.DiGraph, output_path: Path) -> Path:
         pos,
         edge_labels=edge_labels,
         font_size=7.0,
-        bbox={"boxstyle": "round,pad=0.18", "fc": "white", "ec": "none", "alpha": 0.9},
+        bbox={"boxstyle": "round,pad=0.18", "fc": "white", "ec": "none", "alpha": 0.92},
         ax=ax,
     )
 
@@ -230,8 +230,8 @@ def render_fund_flow_figure(graph: nx.DiGraph, output_path: Path) -> Path:
         fontweight="bold",
         pad=14,
     )
-    ax.set_xlim(-1.1, 15.2)
-    ax.set_ylim(-2.2, 2.1)
+    ax.set_xlim(-1.2, 19.5)
+    ax.set_ylim(-2.3, 2.2)
     ax.axis("off")
     fig.tight_layout()
     fig.savefig(output_path, dpi=180, bbox_inches="tight")

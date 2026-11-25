@@ -34,29 +34,42 @@ def assess_domain_similarity(
     if cand == ref or cand.endswith(f".{ref}"):
         return {"domain": cand, "is_exact_match": True, "is_lookalike": False, "similarity": 1.0}
 
-    cand_label = cand.split(".", 1)[0]
+    labels = [lbl for lbl in cand.split(".") if lbl]
+    stem_labels = labels[:-1] if len(labels) > 1 else labels
     ref_label = ref.split(".", 1)[0]
-    raw_ratio = SequenceMatcher(None, cand_label, ref_label).ratio()
-    norm_cand = normalize_lookalike(cand)
     norm_ref = normalize_lookalike(ref)
-    norm_ratio = SequenceMatcher(None, norm_cand, norm_ref).ratio()
 
-    contains_brand = ref_label in norm_cand or norm_cand == norm_ref
-    is_lookalike = contains_brand or norm_ratio >= 0.78 or raw_ratio >= 0.78
+    best_raw_ratio = 0.0
+    best_norm_ratio = 0.0
+    matched_homoglyph = False
+    matched_brand = False
+
+    for cand_label in stem_labels:
+        raw_ratio = SequenceMatcher(None, cand_label, ref_label).ratio()
+        norm_cand = normalize_lookalike(cand_label)
+        norm_ratio = SequenceMatcher(None, norm_cand, norm_ref).ratio()
+        best_raw_ratio = max(best_raw_ratio, raw_ratio)
+        best_norm_ratio = max(best_norm_ratio, norm_ratio)
+        if norm_cand == norm_ref and cand != ref:
+            matched_homoglyph = True
+        if ref_label in norm_cand or norm_cand == norm_ref:
+            matched_brand = True
+
+    is_lookalike = matched_homoglyph or matched_brand or best_norm_ratio >= 0.78 or best_raw_ratio >= 0.78
 
     reason = None
-    if norm_cand == norm_ref and cand != ref:
+    if matched_homoglyph:
         reason = f"homoglyph/TLD lookalike of '{ref}'"
-    elif contains_brand:
+    elif matched_brand:
         reason = f"brand-impersonating domain containing '{ref_label}'"
     elif is_lookalike:
-        reason = f"high lexical similarity ({raw_ratio:.2f}) to '{ref}'"
+        reason = f"high lexical similarity ({best_raw_ratio:.2f}) to '{ref}'"
 
     return {
         "domain": cand,
         "is_exact_match": False,
         "is_lookalike": is_lookalike,
-        "similarity": round(max(raw_ratio, norm_ratio), 3),
+        "similarity": round(max(best_raw_ratio, best_norm_ratio), 3),
         "reason": reason,
     }
 

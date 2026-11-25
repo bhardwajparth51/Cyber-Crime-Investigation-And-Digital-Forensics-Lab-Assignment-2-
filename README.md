@@ -1,4 +1,4 @@
-a# Operation Hydra: Unraveling a Multi-Vector Cyber Crime Involving Phishing, Spoofing & Financial Fraud
+# Operation Hydra: Unraveling a Multi-Vector Cyber Crime Involving Phishing, Spoofing & Financial Fraud
 
 Academic Digital Forensics & Cybercrime Investigation Project (**Assignment 2 – Unit 2: Types of Cyber Crimes**) modeling a realistic, deterministic, 100% offline cybercrime investigation against a fictional Indian financial services firm: **Asterion Financial Services Pvt. Ltd.** (`asterionfin.example`).
 
@@ -82,7 +82,7 @@ operation-hydra/
 ├── reports/
 │   ├── final-investigation-report.md
 │   ├── ioc-report.json
-│   ├── figures/               # Generated fund-flow-graph.png
+│   ├── figures/               # Generated diagrams, fund-flow graph, and CLI screenshots
 │   └── generated/             # Derived JSON outputs (kept separate from evidence/)
 └── tests/                     # Offline pytest suite
 ```
@@ -115,8 +115,9 @@ pytest -v
 # (Optional) Regenerate PNG diagrams and captured CLI output screenshots in reports/figures/
 python scripts/generate_figures.py
 
-# (Optional) Export the formal investigation report to Word (.docx)
+# (Optional) Export the formal investigation report to Word (.docx) and PDF (.pdf)
 python scripts/export_report_docx.py
+python scripts/export_report_pdf.py
 ```
 
 ## Investigation Visualizations & Captured Screenshots
@@ -150,6 +151,7 @@ Fund-flow figure   : reports/figures/fund-flow-graph.png
 ## Legal Framework Overview
 
 Operation Hydra maps seven cybercrime categories across:
+
 - **India:** Information Technology Act, 2000 (**§§ 43, 66, 66C, 66D, 70B** & CERT-In April 2022 Directions) and Bharatiya Nyaya Sanhita, 2023 (**§§ 61, 318, 319, 336, 340**, replacing the IPC effective 1 July 2024).
 - **International:** Council of Europe **Budapest Convention** (Arts. 2, 4, 5, 7, 8), **US CFAA** (`18 U.S.C. § 1030`, US-jurisdiction specific), and **EU GDPR** (Arts. 32–34, personal data breach governance).
 

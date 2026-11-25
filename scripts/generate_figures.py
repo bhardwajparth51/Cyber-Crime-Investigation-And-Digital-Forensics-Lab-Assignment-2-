@@ -127,9 +127,18 @@ def render_timeline_chart(timeline_json_path: Path, output_path: Path) -> Path:
         "authentication": "#059669",
     }
 
-    fig, ax = plt.subplots(figsize=(13, 5.4))
+    fig, ax = plt.subplots(figsize=(13.5, 5.6))
     times = [datetime.fromisoformat(ev["timestamp_utc"].replace("Z", "+00:00")) for ev in events]
-    ys = [layer_y[ev["source_layer"]] for ev in events]
+    base_ys = [layer_y[ev["source_layer"]] for ev in events]
+    # Add gentle vertical jitter when multiple endpoint events cluster within seconds
+    endpoint_offsets = {
+        "EVT-EP-001": -0.14,
+        "EVT-EP-002": -0.07,
+        "EVT-EP-003": 0.0,
+        "EVT-EP-004": 0.07,
+        "EVT-EP-005": 0.14,
+    }
+    ys = [y + endpoint_offsets.get(ev["evidence_ref"], 0.0) for ev, y in zip(events, base_ys)]
     colors = [layer_colors[ev["source_layer"]] for ev in events]
 
     ax.scatter(times, ys, c=colors, s=85, edgecolors="#0f172a", linewidths=0.9, zorder=3)
@@ -137,13 +146,14 @@ def render_timeline_chart(timeline_json_path: Path, output_path: Path) -> Path:
     # Annotate key forensic milestones
     highlights = {
         "phishing-01.eml": ("PHISH-01", (0, 12)),
-        "EVT-EP-001": ("Decoy Opened", (-10, 13)),
-        "AUTH-005": ("SES-9941-HYDRA", (-12, -17)),
-        "AUTH-006": ("PAY-REQ-7721", (0, 13)),
-        "TXN-001": ("TXN-001\nINR 450K", (-15, 13)),
+        "EVT-EP-001": ("Decoy Opened", (-14, -22)),
+        "EVT-EP-005": ("Beacon\n09:15:22Z", (10, 14)),
+        "AUTH-005": ("SES-9941-HYDRA", (-10, -18)),
+        "AUTH-006": ("PAY-REQ-7721", (0, 14)),
+        "TXN-001": ("TXN-001\nINR 450K", (-15, 14)),
         "WLT-SIM-002": ("Exit Wallet", (-12, 13)),
-        "AUTH-007": ("Detected\n10:15Z", (-15, 14)),
-        "AUTH-008": ("Contained\n10:20Z", (4, -18)),
+        "AUTH-007": ("Detected\n10:15Z", (-18, 15)),
+        "AUTH-008": ("Contained\n10:20Z", (-12, -26)),
     }
     for ev, dt, y in zip(events, times, ys):
         ref = ev["evidence_ref"]
@@ -164,7 +174,7 @@ def render_timeline_chart(timeline_json_path: Path, output_path: Path) -> Path:
     ax.set_yticklabels([label for _, label in layer_order], fontsize=9.5, fontweight="bold")
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M UTC"))
     ax.grid(axis="both", linestyle="--", alpha=0.45)
-    ax.set_ylim(-0.7, len(layer_order) - 0.2)
+    ax.set_ylim(-0.9, len(layer_order) - 0.2)
     ax.set_title(
         "Operation Hydra — Multi-Source Incident Timeline (20 November 2026, 28 Active-Day Events)",
         fontsize=12,

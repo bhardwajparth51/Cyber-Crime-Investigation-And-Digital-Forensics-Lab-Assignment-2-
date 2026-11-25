@@ -162,6 +162,13 @@ def run_pipeline(
     }
 
 
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT_DIR))
+    except ValueError:
+        return str(path)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the Operation Hydra offline analysis pipeline.")
     parser.add_argument("--evidence-dir", type=Path, default=ROOT_DIR / "evidence")
@@ -176,7 +183,7 @@ def main() -> int:
     print(f"Evidence integrity : {'SKIPPED' if args.skip_verify else 'VERIFIED'}")
     print(f"Emails analyzed    : {summary['emails_analyzed']} (all synthetic)")
     print(f"Malware class      : {summary['malware_classification']}")
-    print(f"Total IOCs         : {summary['ioc_count']} -> {summary['ioc_report_path']}")
+    print(f"Total IOCs         : {summary['ioc_count']} -> {_display_path(Path(summary['ioc_report_path']))}")
     print(
         "Financial impact   : "
         f"INR {impact['total_fraudulent_outflow_inr']:,.2f} outflow | "
@@ -184,8 +191,8 @@ def main() -> int:
         f"INR {impact['unrecovered_loss_inr']:,.2f} unrecovered"
     )
     print(f"Timeline events    : {summary['timeline_events']} sequenced UTC events")
-    print(f"Derived outputs    : {summary['outputs_dir']}")
-    print(f"Fund-flow figure   : {summary['figure_path']}")
+    print(f"Derived outputs    : {_display_path(Path(summary['outputs_dir']))}")
+    print(f"Fund-flow figure   : {_display_path(Path(summary['figure_path']))}")
     return 0
 
 

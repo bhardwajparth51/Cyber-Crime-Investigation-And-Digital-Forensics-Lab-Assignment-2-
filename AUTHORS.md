@@ -1,12 +1,14 @@
 # Authors and Attribution
 
 ## Project Author
+
 - **Name:** Parth Bhardwaj
 - **Roll No.:** `2301730289`
 - **Role:** Academic Investigator, Assignment 2 (Unit 2: Types of Cyber Crimes)
 - **Repository:** https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-
 
 ## Authorship Declaration
+
 This repository presents a wholly fictional, deterministic academic digital forensics simulation titled **Operation Hydra** targeting a fictional organization (**Asterion Financial Services Pvt. Ltd.**).
 
 - All email samples, headers, IP addresses (RFC 5737 TEST-NET ranges), domains (`.example` / `.invalid` RFC 2606 reserved suffixes), endpoint telemetry events, authentication logs, bank accounts, UPI/IMPS/NEFT references, and cryptocurrency wallet identifiers are synthetic.
