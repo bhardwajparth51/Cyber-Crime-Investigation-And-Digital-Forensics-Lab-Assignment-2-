@@ -220,3 +220,11 @@ Operation Hydra illustrates how modern financial cybercrime bridges technical de
 7. United States Computer Fraud and Abuse Act, 18 U.S.C. § 1030 — https://www.law.cornell.edu/uscode/text/18/1030
 8. European Union General Data Protection Regulation (EU) 2016/679, Articles 32–34 — https://eur-lex.europa.eu/eli/reg/2016/679/oj
 9. IETF RFC 2606 (*Reserved Top Level DNS Names*) & RFC 5737 (*IPv4 Address Blocks Reserved for Documentation*).
+
+---
+
+## Repository & Submission Details
+
+- **Submitted By:** Parth Bhardwaj (Roll No. `2301730289`)
+- **Assignment:** Assignment 2 – Unit 2: Types of Cyber Crimes (`Operation Hydra`)
+- **GitHub Repository:** https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-

@@ -89,7 +89,7 @@ def _add_inline_runs(paragraph, text: str, base_size: float = 10.5) -> None:
             r = paragraph.add_run(label)
             r.font.size = Pt(base_size)
             r.font.color.rgb = RGBColor(29, 78, 216)
-            if target.startswith("http"):
+            if target.startswith("http") and label != target:
                 r_url = paragraph.add_run(f" ({target})")
                 r_url.font.size = Pt(max(base_size - 1.0, 8.5))
                 r_url.font.color.rgb = RGBColor(100, 116, 139)
