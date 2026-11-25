@@ -1,0 +1,284 @@
+{
+  "incident_id": "INC-2026-HYDRA-01",
+  "classification": "synthetic",
+  "disclaimer": "All IOCs are synthetic artifacts from the Operation Hydra simulation; none are externally verified threat intelligence.",
+  "total_iocs": 23,
+  "counts_by_type": {
+    "domain": 5,
+    "file_path": 2,
+    "filename": 3,
+    "ip": 4,
+    "process_name": 1,
+    "sha256": 4,
+    "url": 4
+  },
+  "iocs": [
+    {
+      "value": "asteri0nfin.example",
+      "type": "domain",
+      "source_evidence": [
+        "phishing-01.eml"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "asterion-billing.invalid",
+      "type": "domain",
+      "source_evidence": [
+        "phishing-01.eml",
+        "phishing-02.eml"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "asterionfin-verify.example",
+      "type": "domain",
+      "source_evidence": [
+        "phishing-03.eml"
+      ],
+      "first_observed": "2026-11-20T09:04:15Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "cdn.asteri0nfin.example",
+      "type": "domain",
+      "source_evidence": [
+        "phishing-02.eml"
+      ],
+      "first_observed": "2026-11-20T08:55:40Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "pay-verify.asterionfin-verify.example",
+      "type": "domain",
+      "source_evidence": [
+        "phishing-01.eml",
+        "phishing-03.eml",
+        "execution-events.json",
+        "connection-logs.json",
+        "encoded_payload_fixture.txt"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "C:\\Users\\rohan.deshmukh\\AppData\\Local\\Temp\\invoice_viewer.exe",
+      "type": "file_path",
+      "source_evidence": [
+        "execution-events.json"
+      ],
+      "first_observed": "2026-11-20T09:15:02Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "C:\\Users\\rohan.deshmukh\\Downloads\\Vendor_Invoice_INV-2026-8841.pdf.html",
+      "type": "file_path",
+      "source_evidence": [
+        "execution-events.json"
+      ],
+      "first_observed": "2026-11-20T09:14:48Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "Payment_Remittance_Batch_Nov20.zip",
+      "type": "filename",
+      "source_evidence": [
+        "phishing-02.eml"
+      ],
+      "first_observed": "2026-11-20T08:55:40Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "Vendor_Invoice_INV-2026-8841.pdf.html",
+      "type": "filename",
+      "source_evidence": [
+        "phishing-01.eml"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "invoice_viewer.exe",
+      "type": "filename",
+      "source_evidence": [
+        "malware-observations.json"
+      ],
+      "first_observed": "2026-11-20T09:15:02Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "198.51.100.42",
+      "type": "ip",
+      "source_evidence": [
+        "phishing-01.eml",
+        "connection-logs.json",
+        "ip-observations.csv"
+      ],
+      "first_observed": "2026-11-20T08:42:08Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "198.51.100.88",
+      "type": "ip",
+      "source_evidence": [
+        "phishing-03.eml",
+        "execution-events.json",
+        "connection-logs.json",
+        "ip-observations.csv",
+        "encoded_payload_fixture.txt"
+      ],
+      "first_observed": "2026-11-20T09:04:12Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "203.0.113.77",
+      "type": "ip",
+      "source_evidence": [
+        "phishing-02.eml",
+        "connection-logs.json",
+        "ip-observations.csv"
+      ],
+      "first_observed": "2026-11-20T08:55:37Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "203.0.113.95",
+      "type": "ip",
+      "source_evidence": [
+        "connection-logs.json",
+        "ip-observations.csv"
+      ],
+      "first_observed": "2026-11-20T09:18:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "invoice_viewer.exe",
+      "type": "process_name",
+      "source_evidence": [
+        "execution-events.json"
+      ],
+      "first_observed": "2026-11-20T09:14:48Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "9a5add39d295b4f41d8fb660957992b440f278c00bce97a0bff7dea6d6815b72",
+      "type": "sha256",
+      "source_evidence": [
+        "phishing-02.eml"
+      ],
+      "first_observed": "2026-11-20T08:55:40Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "bf6c1fd6a8ee9840cae4bbf844d60a1228076b39f3caa7cf6a60364b22ab7f51",
+      "type": "sha256",
+      "source_evidence": [
+        "phishing-01.eml"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "type": "sha256",
+      "source_evidence": [
+        "malware-observations.json"
+      ],
+      "first_observed": "2026-11-20T09:15:02Z",
+      "confidence": "medium",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "fb178ccd1bfb994061074e34f3c27666491ef2478cc1ef0e5411c6b1db9bc7b9",
+      "type": "sha256",
+      "source_evidence": [
+        "encoded_payload_fixture.txt"
+      ],
+      "first_observed": "2026-11-20T09:15:09Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "https://cdn.asteri0nfin.example/viewer/remittance",
+      "type": "url",
+      "source_evidence": [
+        "phishing-02.eml"
+      ],
+      "first_observed": "2026-11-20T08:55:40Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "https://pay-verify.asterionfin-verify.example/auth/session",
+      "type": "url",
+      "source_evidence": [
+        "execution-events.json"
+      ],
+      "first_observed": "2026-11-20T09:15:22Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "https://pay-verify.asterionfin-verify.example/invoice/8841",
+      "type": "url",
+      "source_evidence": [
+        "phishing-01.eml"
+      ],
+      "first_observed": "2026-11-20T08:42:10Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    },
+    {
+      "value": "https://pay-verify.asterionfin-verify.example/vendor-mandate",
+      "type": "url",
+      "source_evidence": [
+        "phishing-03.eml"
+      ],
+      "first_observed": "2026-11-20T09:04:15Z",
+      "confidence": "high",
+      "origin": "synthetic",
+      "is_synthetic": true
+    }
+  ]
+}

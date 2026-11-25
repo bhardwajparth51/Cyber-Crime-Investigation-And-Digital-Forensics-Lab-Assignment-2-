@@ -1,0 +1,19 @@
+Return-Path: <bounce@asterion-billing.invalid>
+Received: from mail.asterionfin.example (192.0.2.10) by mx.asterionfin.example
+ with ESMTPS id hydra02; Fri, 20 Nov 2026 08:55:40 +0000
+Received: from mailout.asterion-billing.invalid (203.0.113.77) by
+ mail.asterionfin.example with ESMTP id ext02; Fri, 20 Nov 2026 08:55:37 +0000
+Authentication-Results: mx.asterionfin.example; spf=softfail (simulated:
+ 203.0.113.77 mismatch for header From asterionfin.example)
+ smtp.mailfrom=asterion-billing.invalid; dkim=fail (simulated: body hash
+ mismatch) header.d=asterionfin.example; dmarc=fail (simulated: alignment
+ failed) header.from=asterionfin.example
+From: Asterion Finance Ops <finance-ops@asterionfin.example>
+Reply-To: ops-clearance@asterion-billing.invalid
+To: rohan.deshmukh@asterionfin.example
+Subject: Action Needed: November Payment Remittance Batch Re-validation
+Date: Fri, 20 Nov 2026 08:55:40 +0000
+Message-ID: <remit-20261120@asterion-billing.invalid>
+X-Simulation-Notice: SYNTHETIC_ACADEMIC_EVIDENCE_OPERATION_HYDRA
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1966124858057914307=="

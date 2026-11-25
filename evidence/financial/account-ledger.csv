@@ -1,0 +1,7 @@
+account_id,account_type,institution,opening_balance_inr,closing_balance_inr,frozen_recoverable_inr,account_status,notes
+ASTERION_CORP_01,corporate_victim,Simulated Corporate Bank India,1250000.00,800000.00,0.00,ACTIVE_PROTECTED,Legitimate victim corporate settlement account
+MULE_ACC_01,suspected_mule_tier1,Simulated Metro Cooperative Bank,0.00,5000.00,5000.00,FROZEN_BY_BANK,"Received INR 450,000; split INR 445,000 within 7 minutes"
+MULE_ACC_02,suspected_mule_tier2,Simulated Deccan Digital Bank,0.00,20000.00,20000.00,FROZEN_BY_BANK,"Received INR 270,000; sent INR 250,000 to CRYPTO_EXCH_SIM_01"
+MULE_ACC_03,suspected_mule_tier2,Simulated Western FinTech Payments,0.00,75000.00,75000.00,FROZEN_BY_BANK,"Received INR 175,000; INR 100,000 NEFT frozen in transit"
+MULE_ACC_04,suspected_mule_tier3,Simulated Coastal Commercial Bank,0.00,0.00,100000.00,HOLD_IN_TRANSIT,"TXN-005 INR 100,000 placed on regulatory hold prior to settlement"
+CRYPTO_EXCH_SIM_01,simulated_exchange_onramp,Simulated Virtual Asset Desk,0.00,250000.00,0.00,CONVERTED_UNRECOVERED,"Converted INR 250,000 into fictional SIM-USDT tokens"

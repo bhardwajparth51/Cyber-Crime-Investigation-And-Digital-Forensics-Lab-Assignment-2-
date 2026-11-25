@@ -1,0 +1,8 @@
+ip_address,range_type,role,simulated_reputation,confidence,first_seen,notes
+192.0.2.10,RFC5737-TEST-NET-1,corporate_mail_gateway,benign_internal,high,2026-11-20T08:42:10Z,Asterion Financial internal MX
+192.0.2.25,RFC5737-TEST-NET-1,corporate_payment_portal,benign_internal,high,2026-11-20T09:18:10Z,Asterion Financial payment approval portal
+192.0.2.50,RFC5737-TEST-NET-1,corporate_workstation_nat,benign_internal,high,2026-11-20T08:30:00Z,Corporate office NAT for WKS-FIN-104
+198.51.100.42,RFC5737-TEST-NET-2,phishing_smtp_relay,suspicious_simulated,high,2026-11-20T08:42:08Z,Relay for lookalike domain asteri0nfin.example
+203.0.113.77,RFC5737-TEST-NET-3,phishing_smtp_relay,suspicious_simulated,high,2026-11-20T08:55:37Z,Relay for spoofed sender asterion-billing.invalid
+198.51.100.88,RFC5737-TEST-NET-2,spoofed_portal_and_staging,malicious_simulated,high,2026-11-20T09:04:12Z,Hosts pay-verify.asterionfin-verify.example
+203.0.113.95,RFC5737-TEST-NET-3,unauthorized_login_source,malicious_simulated,high,2026-11-20T09:18:10Z,External IP executing brute-force/credential replay login

@@ -1,0 +1,58 @@
+[
+  {
+    "event_id": "EVT-EP-001",
+    "timestamp": "2026-11-20T09:14:48Z",
+    "host": "WKS-FIN-104",
+    "user_id": "EMP-FIN-104",
+    "event": "attachment_opened",
+    "process": "invoice_viewer.exe",
+    "file_path": "C:\\Users\\rohan.deshmukh\\Downloads\\Vendor_Invoice_INV-2026-8841.pdf.html",
+    "target": "PHISH-001",
+    "source": "simulation"
+  },
+  {
+    "event_id": "EVT-EP-002",
+    "timestamp": "2026-11-20T09:15:02Z",
+    "host": "WKS-FIN-104",
+    "user_id": "EMP-FIN-104",
+    "event": "suspicious_process_execution",
+    "process": "invoice_viewer.exe",
+    "parent_process": "outlook_sim.exe",
+    "file_path": "C:\\Users\\rohan.deshmukh\\AppData\\Local\\Temp\\invoice_viewer.exe",
+    "source": "simulation"
+  },
+  {
+    "event_id": "EVT-EP-003",
+    "timestamp": "2026-11-20T09:15:09Z",
+    "host": "WKS-FIN-104",
+    "user_id": "EMP-FIN-104",
+    "event": "encoded_config_decoded",
+    "process": "invoice_viewer.exe",
+    "artifact": "encoded_payload_fixture.txt",
+    "indicator": "pay-verify.asterionfin-verify.example",
+    "source": "simulation"
+  },
+  {
+    "event_id": "EVT-EP-004",
+    "timestamp": "2026-11-20T09:15:15Z",
+    "host": "WKS-FIN-104",
+    "user_id": "EMP-FIN-104",
+    "event": "credential_access_attempt",
+    "process": "invoice_viewer.exe",
+    "target": "synthetic_browser_profile",
+    "source": "simulation"
+  },
+  {
+    "event_id": "EVT-EP-005",
+    "timestamp": "2026-11-20T09:15:22Z",
+    "host": "WKS-FIN-104",
+    "user_id": "EMP-FIN-104",
+    "event": "outbound_beacon_attempt",
+    "process": "invoice_viewer.exe",
+    "destination_ip": "198.51.100.88",
+    "destination_domain": "pay-verify.asterionfin-verify.example",
+    "destination_url": "https://pay-verify.asterionfin-verify.example/auth/session",
+    "status": "simulated_observed",
+    "source": "simulation"
+  }
+]

@@ -1,0 +1,9 @@
+event_id,timestamp,user_id,email,source_ip,session_id,application,event_type,status,notes
+AUTH-001,2026-11-20T08:30:00Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,192.0.2.50,SES-4401-CORP,pay.asterionfin.example,login,SUCCESS,Normal corporate office login
+AUTH-002,2026-11-20T09:18:10Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,203.0.113.95,NONE,pay.asterionfin.example,login,FAILED,Anomalous external IP; invalid MFA challenge attempt 1
+AUTH-003,2026-11-20T09:19:05Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,203.0.113.95,NONE,pay.asterionfin.example,login,FAILED,Anomalous external IP; invalid MFA challenge attempt 2
+AUTH-004,2026-11-20T09:20:15Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,203.0.113.95,NONE,pay.asterionfin.example,login,FAILED,Anomalous external IP; legacy fallback bypass attempt
+AUTH-005,2026-11-20T09:22:30Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,203.0.113.95,SES-9941-HYDRA,pay.asterionfin.example,login,SUCCESS,Unauthorized session established from external IP 203.0.113.95
+AUTH-006,2026-11-20T09:41:00Z,EMP-FIN-104,rohan.deshmukh@asterionfin.example,203.0.113.95,SES-9941-HYDRA,pay.asterionfin.example,payment_instruction_modified,SUCCESS,Beneficiary altered and PAY-REQ-7721 approved during anomalous session
+AUTH-007,2026-11-20T10:15:00Z,EMP-FIN-108,meera.nair@asterionfin.example,192.0.2.50,SES-4488-CORP,soc.asterionfin.example,incident_reported,SUCCESS,Finance Controller reports unauthorized PAY-REQ-7721 disbursement
+AUTH-008,2026-11-20T10:20:00Z,EMP-SOC-001,vikram.kulkarni@asterionfin.example,192.0.2.15,SES-SOC-100,pay.asterionfin.example,session_revoked,SUCCESS,SOC revoked SES-9941-HYDRA and isolated WKS-FIN-104

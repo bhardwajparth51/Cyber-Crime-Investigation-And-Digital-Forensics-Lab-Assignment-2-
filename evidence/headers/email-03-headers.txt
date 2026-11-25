@@ -1,0 +1,20 @@
+Return-Path: <audit-desk@asterionfin-verify.example>
+Received: from mail.asterionfin.example (192.0.2.10) by mx.asterionfin.example
+ with ESMTPS id hydra03; Fri, 20 Nov 2026 09:04:15 +0000
+Received: from portal-mx.asterionfin-verify.example (198.51.100.88) by
+ mail.asterionfin.example with ESMTP id ext03; Fri, 20 Nov 2026 09:04:12 +0000
+Authentication-Results: mx.asterionfin.example; spf=pass (simulated:
+ 198.51.100.88 listed in lookalike domain SPF)
+ smtp.mailfrom=asterionfin-verify.example; dkim=pass (simulated: signed by
+ lookalike domain key) header.d=asterionfin-verify.example; dmarc=none
+ (simulated: no DMARC record published for lookalike domain)
+From: Asterion Audit Desk <audit-desk@asterionfin-verify.example>
+Reply-To: audit-desk@asterionfin-verify.example
+To: meera.nair@asterionfin.example
+Subject: Revised Vendor Bank Mandate Approval - Immediate Sign-off
+Date: Fri, 20 Nov 2026 09:04:15 +0000
+Message-ID: <mandate-7721@asterionfin-verify.example>
+X-Simulation-Notice: SYNTHETIC_ACADEMIC_EVIDENCE_OPERATION_HYDRA
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0

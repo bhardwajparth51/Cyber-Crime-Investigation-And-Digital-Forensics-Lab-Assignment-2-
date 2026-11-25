@@ -1,0 +1,47 @@
+Return-Path: <bounce-8841@asteri0nfin.example>
+Received: from mail.asterionfin.example (192.0.2.10) by mx.asterionfin.example
+ with ESMTPS id hydra01; Fri, 20 Nov 2026 08:42:10 +0000
+Received: from relay01.asteri0nfin.example (198.51.100.42) by
+ mail.asterionfin.example with ESMTP id ext01; Fri, 20 Nov 2026 08:42:08 +0000
+Authentication-Results: mx.asterionfin.example; spf=fail (simulated:
+ 198.51.100.42 not authorized for asterionfin.example)
+ smtp.mailfrom=asteri0nfin.example; dkim=none (simulated: no signature
+ present); dmarc=fail (simulated: p=reject policy alignment failed)
+ header.from=asteri0nfin.example
+From: Asterion Billing Desk <billing@asteri0nfin.example>
+Reply-To: settlement-desk@asterion-billing.invalid
+To: rohan.deshmukh@asterionfin.example
+Subject: URGENT: Overdue Vendor Invoice INV-2026-8841 Verification Required
+Date: Fri, 20 Nov 2026 08:42:10 +0000
+Message-ID: <inv-8841-hydra@asteri0nfin.example>
+X-Simulation-Notice: SYNTHETIC_ACADEMIC_EVIDENCE_OPERATION_HYDRA
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============3986655024234729818=="
+
+--===============3986655024234729818==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Rohan,
+
+Please review and verify the overdue vendor settlement INV-2026-8841 before t=
+he 10:00 AM payment cutoff.
+Portal link: https://pay-verify.asterionfin-verify.example/invoice/8841
+Open the attached verification document to confirm beneficiary details.
+
+Regards,
+Accounts & Vendor Billing Desk (Simulated)
+
+--===============3986655024234729818==
+Content-Type: text/html
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Vendor_Invoice_INV-2026-8841.pdf.html"
+MIME-Version: 1.0
+
+PCEtLSBTWU5USEVUSUMgREVDT1kgQVRUQUNITUVOVDogT1BFUkFUSU9OIEhZRFJBIFNJTVVMQVRJ
+T04gLS0+CjxodG1sPjxib2R5PjxwPlNpbXVsYXRlZCBpbnZvaWNlIHBvcnRhbCByZWRpcmVjdDog
+aHR0cHM6Ly9wYXktdmVyaWZ5LmFzdGVyaW9uZmluLXZlcmlmeS5leGFtcGxlL2ludm9pY2UvODg0
+MTwvcD48L2JvZHk+PC9odG1sPgo=
+
+--===============3986655024234729818==--

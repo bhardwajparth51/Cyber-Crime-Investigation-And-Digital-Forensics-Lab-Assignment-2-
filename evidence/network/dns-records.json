@@ -1,0 +1,105 @@
+{
+  "classification": "synthetic",
+  "disclaimer": "Reserved RFC 2606 domains and RFC 5737 TEST-NET IPs only.",
+  "domains": {
+    "asterionfin.example": {
+      "role": "legitimate_target_organization",
+      "a": [
+        "192.0.2.10",
+        "192.0.2.25"
+      ],
+      "aaaa": [
+        "2001:db8:10::10"
+      ],
+      "mx": [
+        "10 mail.asterionfin.example"
+      ],
+      "txt": [
+        "v=spf1 ip4:192.0.2.0/24 -all"
+      ],
+      "spf": "v=spf1 ip4:192.0.2.0/24 -all",
+      "dkim_selectors": {
+        "s1._domainkey.asterionfin.example": "v=DKIM1; k=rsa; p=SIMULATED_KEY_LEGIT"
+      },
+      "dmarc": "v=DMARC1; p=reject; rua=mailto:dmarc@asterionfin.example",
+      "whois": {
+        "registrar": "Simulated National Registry India",
+        "created_at": "2019-03-14T00:00:00Z",
+        "updated_at": "2026-03-14T00:00:00Z",
+        "registrant_org": "Asterion Financial Services Pvt. Ltd.",
+        "country": "IN"
+      }
+    },
+    "asteri0nfin.example": {
+      "role": "attacker_lookalike_homoglyph",
+      "a": [
+        "198.51.100.42"
+      ],
+      "aaaa": [],
+      "mx": [
+        "10 relay01.asteri0nfin.example"
+      ],
+      "txt": [
+        "v=spf1 ip4:198.51.100.42 ~all"
+      ],
+      "spf": "v=spf1 ip4:198.51.100.42 ~all",
+      "dkim_selectors": {},
+      "dmarc": null,
+      "whois": {
+        "registrar": "Simulated Offshore Registrar",
+        "created_at": "2026-11-16T04:12:00Z",
+        "updated_at": "2026-11-16T04:12:00Z",
+        "registrant_org": "REDACTED FOR PRIVACY (Synthetic)",
+        "country": "ZZ"
+      }
+    },
+    "asterion-billing.invalid": {
+      "role": "attacker_spoofed_reply_domain",
+      "a": [
+        "203.0.113.77"
+      ],
+      "aaaa": [],
+      "mx": [
+        "10 mailout.asterion-billing.invalid"
+      ],
+      "txt": [
+        "v=spf1 ip4:203.0.113.77 -all"
+      ],
+      "spf": "v=spf1 ip4:203.0.113.77 -all",
+      "dkim_selectors": {},
+      "dmarc": null,
+      "whois": {
+        "registrar": "Simulated Offshore Registrar",
+        "created_at": "2026-11-17T09:00:00Z",
+        "updated_at": "2026-11-17T09:00:00Z",
+        "registrant_org": "REDACTED FOR PRIVACY (Synthetic)",
+        "country": "ZZ"
+      }
+    },
+    "asterionfin-verify.example": {
+      "role": "attacker_spoofed_portal_domain",
+      "a": [
+        "198.51.100.88"
+      ],
+      "aaaa": [],
+      "mx": [
+        "10 portal-mx.asterionfin-verify.example"
+      ],
+      "txt": [
+        "v=spf1 ip4:198.51.100.88 -all"
+      ],
+      "spf": "v=spf1 ip4:198.51.100.88 -all",
+      "dkim_selectors": {
+        "hydra._domainkey.asterionfin-verify.example": "v=DKIM1; k=rsa; p=SIMULATED_KEY_LOOKALIKE"
+      },
+      "dmarc": null,
+      "whois": {
+        "registrar": "Simulated Offshore Registrar",
+        "created_at": "2026-11-18T11:30:00Z",
+        "updated_at": "2026-11-18T11:30:00Z",
+        "registrant_org": "REDACTED FOR PRIVACY (Synthetic)",
+        "country": "ZZ"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "incident_id": "INC-2026-HYDRA-01",
+  "custodian": "Vikram Kulkarni (IR-Lead, Asterion SOC)",
+  "evidence_ids": [
+    "EV-001",
+    "EV-002",
+    "EV-003",
+    "EV-004",
+    "EV-005",
+    "EV-006",
+    "EV-007",
+    "EV-008",
+    "EV-009",
+    "EV-010",
+    "EV-011",
+    "EV-012",
+    "EV-013",
+    "EV-014",
+    "EV-015"
+  ],
+  "custody_log": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-11-20T10:30:00Z",
+      "action": "ACQUIRED_AND_HASHED",
+      "actor": "Vikram Kulkarni (IR-Lead, Asterion SOC)",
+      "location": "evidence/",
+      "notes": "Preserved 15 synthetic artifacts for INC-2026-HYDRA-01 with SHA-256 sealing."
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-11-20T10:35:00Z",
+      "action": "DERIVED_ANALYSIS_SEPARATION",
+      "actor": "Operation Hydra Forensic Pipeline",
+      "location": "reports/generated/",
+      "notes": "Read-only ingestion into analysis modules; derived outputs written exclusively under reports/generated/ to preserve original evidence."
+    }
+  ]
+}
