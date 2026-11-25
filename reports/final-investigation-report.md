@@ -1,6 +1,7 @@
 # Operation Hydra: Unraveling a Multi-Vector Cyber Crime Involving Phishing, Spoofing & Financial Fraud
 
 **Formal Digital Forensics & Legal-Technical Investigation Report**  
+**Prepared By:** Parth Bhardwaj (Roll No. `2301730289`)  
 **Incident Reference:** `INC-2026-HYDRA-01`  
 **Affected Entity (Fictional):** Asterion Financial Services Pvt. Ltd. (`asterionfin.example`)  
 **Incident Date:** 20 November 2026 (UTC)  

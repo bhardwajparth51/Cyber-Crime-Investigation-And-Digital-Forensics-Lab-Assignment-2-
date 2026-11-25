@@ -1,7 +1,8 @@
-# Operation Hydra: Unraveling a Multi-Vector Cyber Crime Involving Phishing, Spoofing & Financial Fraud
+a# Operation Hydra: Unraveling a Multi-Vector Cyber Crime Involving Phishing, Spoofing & Financial Fraud
 
 Academic Digital Forensics & Cybercrime Investigation Project (**Assignment 2 – Unit 2: Types of Cyber Crimes**) modeling a realistic, deterministic, 100% offline cybercrime investigation against a fictional Indian financial services firm: **Asterion Financial Services Pvt. Ltd.** (`asterionfin.example`).
 
+**Author:** Parth Bhardwaj (Roll No. `2301730289`)  
 **GitHub Repository:** https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-
 
 ---
@@ -162,7 +163,7 @@ Full statutory mapping, exclusions (`§ 66A`, `§ 66E`, `§§ 67/67B`), and juri
 
 ## Authorship Declaration
 
-Authored by **Parth Bhardwaj** for Assignment 2 (Unit 2: Types of Cyber Crimes). All forensic scripts, synthetic fixtures, and analytical reports were created specifically for reproducible academic demonstration; no external threat infrastructure was queried during execution.
+Authored by **Parth Bhardwaj** (Roll No. `2301730289`) for Assignment 2 (Unit 2: Types of Cyber Crimes). All forensic scripts, synthetic fixtures, and analytical reports were created specifically for reproducible academic demonstration; no external threat infrastructure was queried during execution.
 
 ## References
 

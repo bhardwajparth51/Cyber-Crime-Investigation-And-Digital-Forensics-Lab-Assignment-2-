@@ -1,6 +1,7 @@
 # Operation Hydra — Investigation Overview
 
 ## Case Summary
+- **Investigator / Author:** Parth Bhardwaj (Roll No. `2301730289`)
 - **Incident Identifier:** `INC-2026-HYDRA-01`
 - **Campaign Designation:** Operation Hydra
 - **Target Organization (Fictional):** Asterion Financial Services Pvt. Ltd. (`asterionfin.example`)

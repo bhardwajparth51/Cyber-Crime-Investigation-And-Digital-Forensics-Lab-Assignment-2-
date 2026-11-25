@@ -1,7 +1,9 @@
 # Authors and Attribution
 
 ## Project Author
-- **Parth Bhardwaj** — Academic Investigator, Assignment 2 (Unit 2: Types of Cyber Crimes)
+- **Name:** Parth Bhardwaj
+- **Roll No.:** `2301730289`
+- **Role:** Academic Investigator, Assignment 2 (Unit 2: Types of Cyber Crimes)
 - **Repository:** https://github.com/bhardwajparth51/Cyber-Crime-Investigation-And-Digital-Forensics-Lab-Assignment-2-
 
 ## Authorship Declaration
